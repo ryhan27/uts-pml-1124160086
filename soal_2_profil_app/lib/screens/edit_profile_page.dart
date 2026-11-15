@@ -27,6 +27,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       Profile dataBaru = Profile(
         nama: _namaCtrl.text, email: _emailCtrl.text, noHp: _hpCtrl.text, bio: _bioCtrl.text,
         nim: widget.profile.nim, prodi: widget.profile.prodi, kelas: widget.profile.kelas, github: widget.profile.github,
+        foto: widget.profile.foto,
       );
       Navigator.pop(context, dataBaru);
     }

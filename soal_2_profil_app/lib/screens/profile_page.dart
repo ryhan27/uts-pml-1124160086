@@ -14,9 +14,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   Profile myProfile = Profile(
     nama: 'Muhamad Rayhan Ramadhansyah', nim: '1124160086', prodi: 'Teknik Informatika',
-    kelas: 'TI24-P SE 2', bio: 'Software Engineer antusias',
+    kelas: 'TI24-P SE 2', bio: 'MAHASISWA GLOBAL INSTITUTE',
     email: 'muhamadrayhanramadhansyah80@gmail.com', noHp: '085893164503', github: 'ryhan27',
-    foto: 'assets/images/cyrene.jpg',
+    foto: 'assets/images/profile.jpg',
   );
 
   @override
@@ -28,10 +28,14 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             const DrawerHeader(child: Text('Menu Utama', style: TextStyle(fontSize: 24))),
             ListTile(leading: const Icon(Icons.info), title: const Text('Tentang Saya'), onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AboutPage()))),
-            SwitchListTile(
+           SwitchListTile(
               title: const Text('Mode Gelap'),
               value: MyApp.of(context).isDarkMode,
-              onChanged: (val) => MyApp.of(context).toggleTheme(val),
+              onChanged: (val) {
+                setState(() {
+                  MyApp.of(context).toggleTheme(val);
+                });
+              },
             ),
           ],
         ),
@@ -40,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const CircleAvatar(radius: 60, backgroundImage: AssetImage('assets/images/foto.png')),
+            const CircleAvatar(radius: 60, backgroundImage: AssetImage('assets/images/profile.jpg')),
             const SizedBox(height: 16),
             Text(myProfile.nama, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
             Text('${myProfile.nim} - ${myProfile.prodi} (${myProfile.kelas})', textAlign: TextAlign.center),
